@@ -1,0 +1,74 @@
+{% load static %}<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ brand }} — одежда с православным смыслом</title>
+  <meta name="description" content="«{{ brand }}» — бренд одежды, вдохновлённый православной культурой. Минимализм, качество, смысл.">
+  <meta name="theme-color" content="#0b0b0b">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <header class="header">
+    <a href="#top" class="logo">{{ brand }}</a>
+    <nav class="nav">
+      <a href="#about">О бренде</a>
+      <a href="#catalog">Ассортимент</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+    <a href="{{ telegram_url }}" class="btn btn--small" target="_blank" rel="noopener">Telegram</a>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <p class="eyebrow">Одежда · Православная культура</p>
+      <h1>{{ brand }}</h1>
+      <p class="lead">Одежда для тех, кто не боится говорить о вере. Тихо, глубоко и со вкусом.</p>
+      <a href="{{ telegram_url }}" class="btn" target="_blank" rel="noopener">Перейти в Telegram</a>
+    </section>
+
+    <section id="about" class="section">
+      <h2>О бренде</h2>
+      <div class="about">
+        <p>«{{ brand }}» — это одежда, в которой православная традиция звучит современным языком. Мы берём древние образы, слова молитв и символы и переносим их на ткань без лишнего шума.</p>
+        <p>Название бренда — от слова «дерзновение»: смелость стоять перед Богом и людьми, оставаясь собой.</p>
+      </div>
+      <ul class="values">
+        {% for title, text in values %}
+        <li><h3>{{ title }}</h3><p>{{ text }}</p></li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section id="catalog" class="section">
+      <h2>Ассортимент</h2>
+      <ul class="grid">
+        {% for p in products %}
+        <li class="card">
+          <div class="card__img">{% if p.image %}<img src="{{ p.image.url }}" alt="{{ p.name }}" loading="lazy">{% else %}<span>{{ p.category }}</span>{% endif %}</div>
+          <h3>{{ p.name }}</h3>
+          <p>{{ p.description }}</p>
+          <div class="card__foot">
+            <span class="price">{{ p.price_display }}</span>
+            <a href="{{ telegram_url }}" target="_blank" rel="noopener">Заказать →</a>
+          </div>
+        </li>
+        {% empty %}
+        <li class="card"><p>Скоро здесь появятся товары.</p></li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section id="contact" class="section cta">
+      <h2>Новинки, дропы и заказы — в Telegram</h2>
+      <p>Подписывайтесь на канал: там первыми показываем коллекции и принимаем заказы.</p>
+      <a href="{{ telegram_url }}" class="btn" target="_blank" rel="noopener">Открыть Telegram</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© {% now "Y" %} {{ brand }}</span>
+    <a href="{{ telegram_url }}" target="_blank" rel="noopener">Telegram</a>
+  </footer>
+</body>
+</html>
