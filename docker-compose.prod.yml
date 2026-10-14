@@ -1,0 +1,13 @@
+# Копируется на сервер как docker-compose.yml рядом с .env (см. .github/workflows/deploy.yml)
+services:
+  web:
+    image: ${IMAGE:?IMAGE не задан}
+    env_file: .env
+    environment:
+      DATABASE_PATH: /data/db.sqlite3
+      MEDIA_ROOT: /data/media
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
