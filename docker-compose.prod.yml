@@ -1,4 +1,4 @@
-# Копируется на сервер как docker-compose.yml рядом с .env (см. .github/workflows/deploy.yml)
+# Копируется на сервер как docker-compose.yml рядом с .env (см. .github/workflows/deploy.yml.bac)
 services:
   web:
     image: ${IMAGE:?IMAGE не задан}
