@@ -1,0 +1,3 @@
+# Только для MySQL (shared-хостинг). Для SQLite не нужен.
+-r requirements.txt
+mysqlclient
