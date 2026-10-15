@@ -9,7 +9,7 @@ import os
 import sys
 
 # --- поправьте под свой хостинг (пути видны в панели и по команде `pwd`) ---
-PROJECT_DIR = '/var/www/u0000000/data/derznovenie'
+PROJECT_DIR = '/var/www/u3683474/data/site/derznovenie/derznovenie-store'
 VENV_DIR = PROJECT_DIR + '/.venv'
 # ---------------------------------------------------------------------------
 
